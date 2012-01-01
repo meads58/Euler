@@ -1,9 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname problem3) (read-case-sensitive #t) (teachpacks ((lib "convert.ss" "teachpack" "htdp") (lib "docs.ss" "teachpack" "htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "convert.ss" "teachpack" "htdp") (lib "docs.ss" "teachpack" "htdp")))))
-;This problem answers the questiong to:
-;What is the largest prime factor of the number 600851475143?
-
 (define (find-max fromList) ; from the list of prime numbers created by 'list-primes' this function finds the largest value from the list.
   (if (null?(cdr fromList)) ; I copied this code but it works fine for what I needed.
       (car fromList)
