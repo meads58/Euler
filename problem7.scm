@@ -1,4 +1,4 @@
-#lang racket
+;#lang racket
 
 ;Find the 10001st prime
 (define (square x)
