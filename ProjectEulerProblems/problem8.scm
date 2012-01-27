@@ -1,31 +1,38 @@
-;Find the greatest product of five consecutive digits in this 1000-digit number below.
-
 (define bigList
 7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450 
 ) 
 
-;Make-list-of-5 takes the first 5 values and returns a list of these 5 values
 
-(define (make-list-of-5 big-list list-size)
-     (cond ((empty? big-list) '())
-         ((= list-size 5) '())
-           (else (cons (item 1 big-list)(make-list-of-5 (butfirst big-list) (+ list-size 1))))))
+(define (list-5 list-nums)
+        (if (< (count list-nums) 5) '()
+                (list   (item 1 list-nums)
+                        (item 2 list-nums)
+                        (item 3 list-nums)
+                        (item 4 list-nums)
+                        (item 5 list-nums))))           
+ 
+ 
+(define (sum-5 list-num)
+  (if (< (length list-num) 5) 1
+        (* (list-ref list-num 0)
+           (list-ref list-num 1)
+           (list-ref list-num 2)
+           (list-ref list-num 3)
+           (list-ref list-num 4))))
+          
 
-;sum-of-5 takes a list and multiplies all the numbers in the list together  
-(define (sum-of-5 list-5 total)
-  (if (empty? list-5) total
-  (sum-of-5 (cdr list-5) (* total (car list-5)))))
 
-;compare-lists holds the biggest total from sum-of-5 and compares it to the next sum of 5
-;values. If bigger this will become the new total else it will compare to the next sum of 5 values.
-(define (compare-lists total next-total big)
-    (cond ((empty? next-total) total)
-          ((empty? big) total)
-          ((< total next-total) (compare-lists next-total (sum-of-5 (make-list-of-5 (butfirst big) 0) 1) (butfirst big)))
-          (else (compare-lists total (sum-of-5 (make-list-of-5 (butfirst big) 0) 1) (butfirst big)))))
+(define (find-5-total total next-total list-num)
+      (cond    ((< (count list-num) 5) total)
+               ((< total next-total) (find-5-total next-total (sum-5 (list-5 (butfirst list-num))) (butfirst list-num)))
+               (else (find-5-total total (sum-5 (list-5 (butfirst list-num))) (butfirst list-num)))))                                  
+               
+(define (main mainList)
+(find-5-total 1 (sum-5 (list-5 mainList)) mainList))
 
-;main call
-(compare-lists 1(sum-of-5 (make-list-of-5 bigList 0) 1) bigList)
+(main bigList)
+
+
 
 
 
