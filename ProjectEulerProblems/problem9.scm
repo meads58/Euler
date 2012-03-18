@@ -26,7 +26,16 @@
       #f))
 
           
-(check-Order? 1 1 1)
+         
+(define (isPyth? a b c)
+  (cond ((and (check-Order? a b c)
+              (check1000? a b c)
+              (check-triple? a b c)) '(all of them))
+        ((check1000? a b c) 'order)
+        (else '(not))))
+        
+         
+(isPyth?  3 4 5)
 
 
 
