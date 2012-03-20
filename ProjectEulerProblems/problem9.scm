@@ -29,7 +29,7 @@
 (define (calcC m n) ;Calculates side C the hypotenuse
   (+(square m) (square n)))
 
-(define (total m n d);Adds a b c togethers and multiples by the d parameter. Increase d will find more combinations of triples
+(define (total m n d);Adds a b c togethers and multiples by the d parameter. Increasing d will find more combinations of triples
   (* d (apply + (eulids m n))))
 
 ; Does the pythagorean triple add up to the max value?
