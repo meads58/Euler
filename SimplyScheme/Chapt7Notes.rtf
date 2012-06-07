@@ -33,3 +33,23 @@ Let Special form: takes 2 arguments: Name-value pair (there can be more than one
 Let is a 'derived expression' in that we can make more than one tempoaray variable at once like 'cond' is a group of 'if' statements.\
 \'a0\
 Definitions with 'define' are permanent in scheme and you can't overwrite them e.g. (define a (+ a 4)).}
+
+;-------------Chapt 10 project
+(define (card-val card)
+  (let ((val (butfirst card)))
+   (cond ((member? val '(2 3 4 5 6 7 8 9 10)) 0)
+         ((equal? val 'a) 4)
+         ((equal? val 'k) 3)
+         ((equal? val 'q) 2)
+         ((equal? val 'j) 1)
+         (else 0))))
+
+(define (high-card-points hand)
+  (accumulate + (every (lambda (val) (card-val val))hand)))
+
+
+(define (count-suit suit hand)
+  (accumulate + (every (lambda (s) (if (equal? suit (first s)) 1 0))hand)))
+
+(define (suit-counts hand)
+  (se(every (lambda (s) (count-suit s)) hand)))
