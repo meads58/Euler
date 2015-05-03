@@ -29,7 +29,7 @@ class EvenFibo
 
   def even_terms
     @term_array.select! {|term| term % 2 == 0 }
-    puts sum_terms @term_array
+    sum_terms @term_array
   end
 
   def sum_terms terms
