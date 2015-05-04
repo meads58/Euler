@@ -9,7 +9,7 @@ class LargestPrime
   end
 
   def find_largest_prime number
-    factors number
+    odd_factors number
     prime_checker number
     largest_prime
   end
@@ -32,9 +32,11 @@ class LargestPrime
     @prime_factors.max
   end
 
-  def factors number
-    1.upto(number) do |num|
-      @factor_array.push(num) if number % num == 0
+  def odd_factors number
+    sqroot = Math.sqrt(number)
+    1.step(sqroot, 2) do |num|
+      p num
+      @factor_array.push(num) if num == 0
     end
   end
 

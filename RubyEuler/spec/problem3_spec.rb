@@ -19,10 +19,10 @@ describe LargestPrime do
     end
   end
 
-  context 'find all factors' do
-    it 'knows all the factors of 20 are 1,2,4,5,10,20' do
-      subject.factors(20)
-      expect(subject.factor_array).to match_array([1,2,4,5,10,20])
+  context 'find all odd factors' do
+    it 'knows all the factors of 20 are 1,5' do
+      subject.odd_factors(20)
+      expect(subject.factor_array).to match_array([1,5])
     end
   end
 
